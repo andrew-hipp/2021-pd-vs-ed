@@ -1,25 +1,25 @@
-\name{anRpackage-package}
-\alias{anRpackage-package}
-\alias{anRpackage}
+\name{PDvED-package}
+\alias{PDvED-package}
+\alias{PDvED}
 \docType{package}
 \title{
-\packageTitle{anRpackage}
+\packageTitle{PDvED}
 }
 \description{
-\packageDescription{anRpackage}
+\packageDescription{PDvED}
 }
 \details{
 
 The DESCRIPTION file:
-\packageDESCRIPTION{anRpackage}
-\packageIndices{anRpackage}
+\packageDESCRIPTION{PDvED}
+\packageIndices{PDvED}
 ~~ An overview of how to use the package, including the most important ~~
 ~~ functions ~~
 }
 \author{
-\packageAuthor{anRpackage}
+\packageAuthor{PDvED}
 
-Maintainer: \packageMaintainer{anRpackage}
+Maintainer: \packageMaintainer{PDvED}
 }
 \references{
 ~~ Literature or other references for background information ~~
