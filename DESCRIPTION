@@ -1,3 +1,4 @@
+Roxygen: list(markdown = TRUE)
 Package: PDvED
 Type: Package
 Title: Simulate and assess _ex situ_ conservation plans for phylogenetic
@@ -42,6 +43,9 @@ Description: This package facilitates simulation and assessment
     as binary or weights / absolute number of accessions; bundled with a phylo object
   3. 'consPlan' - a tree, with a matrix of added taxa
 
-
-
 License: GPL-3
+Imports:
+  ape,
+  TreeSim,
+  phyloregion,
+  picante
