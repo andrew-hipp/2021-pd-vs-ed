@@ -1,3 +1,4 @@
-importFrom(ape, read.tree)
-importFrom(ape, vcv.phylo)
-importFrom(ape, plot.phylo)
+@import ape
+@import TreeSim
+@import phyloregion
+@import picante

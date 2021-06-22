@@ -16,7 +16,8 @@ Description: This package facilitates simulation and assessment
 
   At this point, my thought is that the package will include these functions:
 
-  1. Tree simulation and import -- wrappers to TreeSim and ape
+  1. Tree simulation and import? -- wrappers to TreeSim and ape, or just use of
+    those directly 
   2. Bundler for trees and conservation interests matrix
   3. Calculation of PD and ED metrics - wrappers at this point to
     a. evol_distinct function in phyloregion package
