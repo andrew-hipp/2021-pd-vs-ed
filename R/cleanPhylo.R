@@ -21,7 +21,8 @@
 #' malus2 <- cleanPhylo(malus, delim = '_|_')
 #' quercus2 <- cleanPhylo(quercus)
 #' tilia2 <- cleanPhylo(tilia)
-#'
+#' ulmus2 <- ulmus
+#' ulmus2$tip.label <- paste('Ulmus', ulmus2$tip.label)
 #' @export
 cleanPhylo <- function(tr, delim = '|', tipElem = 1,
                         uniquesOnly = TRUE, strFixed = TRUE,

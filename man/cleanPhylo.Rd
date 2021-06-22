@@ -32,3 +32,14 @@ cleanPhylo(
 \description{
 Clean a phylogeny for single-tip-per-species analyses
 }
+\examples{
+data(malus)
+data(quercus)
+data(tilia)
+data(ulmus)
+malus2 <- cleanPhylo(malus, delim = '_|_')
+quercus2 <- cleanPhylo(quercus)
+tilia2 <- cleanPhylo(tilia)
+ulmus2 <- ulmus
+ulmus2$tip.label <- paste('Ulmus', ulmus2$tip.label)
+}
