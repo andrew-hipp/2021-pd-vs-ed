@@ -14,6 +14,16 @@
 #' @param strFixed Boolean: use \code{fixed = TRUE} in \code{strsplit}?
 #' @param gsubFromTo Character, \code{length = 2}; or \code{NA}: if character, use with \code{gsub} to clean tip labels
 #' @param gsubFixed Boolean: use \code{fixed = TRUE} in \code{gsub}?
+#'
+#' @examples
+#' data(malus)
+#' data(quercus)
+#' data(tilia)
+#' data(ulmus)
+#' malus2 <- cleanPhylo(malus, delim = '_|_')
+#' quercus2 <- cleanPhylo(quercus)
+#' tilia2 <- cleanPhylo(tilia)
+
 cleanPhylo <- function(tr, delim = '|', tipElem = 1,
                         uniquesOnly = TRUE, strFixed = TRUE,
                         gsubFromTo = c('_', ' '),
