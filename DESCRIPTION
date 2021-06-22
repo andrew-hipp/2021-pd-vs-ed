@@ -33,7 +33,7 @@ Description: This package facilitates simulation and assessment
     resulting community or mean ED of final community
   6. Find sampling strategies. use a 'consInt' object, a criterion, and
     possibly other constraints to suggest sampling strategies.
-and these data classes:
+and these data classes: 
   1. 'phylo' - Trees, just using ape
   2. 'consInt' - Conservation interests - a matrix of spp with row names corresponding to
     phylogenetic tip labels, and columns "present" and "desired," either
@@ -45,3 +45,4 @@ Imports:
   TreeSim,
   phyloregion,
   picante
+RoxygenNote: 7.1.1
