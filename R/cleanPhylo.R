@@ -5,8 +5,6 @@
 #' @import phyloregion
 #' @import picante
 #'
-#' @export
-#'
 #' @param tr A \code{phylo} object
 #' @param delim Character delimiting species names from other info
 #' @param tipElem Integer indicating which element of the tip name contains the species
@@ -23,7 +21,8 @@
 #' malus2 <- cleanPhylo(malus, delim = '_|_')
 #' quercus2 <- cleanPhylo(quercus)
 #' tilia2 <- cleanPhylo(tilia)
-
+#'
+#' @export
 cleanPhylo <- function(tr, delim = '|', tipElem = 1,
                         uniquesOnly = TRUE, strFixed = TRUE,
                         gsubFromTo = c('_', ' '),
