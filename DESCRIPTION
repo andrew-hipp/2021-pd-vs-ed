@@ -13,9 +13,7 @@ Description: This package facilitates simulation and assessment
   distinctiveness of conserved species. If you are stumbling across this and
   the package hasn't been published yet, I'm still trying out ideas, but don't
   hesitate to write me with questions or thoughts.
-
   At this point, my thought is that the package will include these functions:
-
   1. Tree simulation and import? -- wrappers to TreeSim and ape, or just use of
     those directly
   2. Bundler for trees and conservation interests matrix
@@ -35,15 +33,12 @@ Description: This package facilitates simulation and assessment
     resulting community or mean ED of final community
   6. Find sampling strategies. use a 'consInt' object, a criterion, and
     possibly other constraints to suggest sampling strategies.
-
 and these data classes:
-
   1. 'phylo' - Trees, just using ape
   2. 'consInt' - Conservation interests - a matrix of spp with row names corresponding to
     phylogenetic tip labels, and columns "present" and "desired," either
     as binary or weights / absolute number of accessions; bundled with a phylo object
   3. 'consPlan' - a tree, with a matrix of added taxa
-
 License: GPL-3
 Imports:
   ape,
