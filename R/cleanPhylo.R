@@ -1,5 +1,12 @@
 #' Clean a phylogeny for single-tip-per-species analyses
 #'
+#' @import ape
+#' @import TreeSim
+#' @import phyloregion
+#' @import picante
+#'
+#' @export
+#'
 #' @param tr A \code{phylo} object
 #' @param delim Character delimiting species names from other info
 #' @param tipElem Integer indicating which element of the tip name contains the species
