@@ -10,6 +10,7 @@
 #' @param matchCol the column in `dat` to match to the tree; if not provided,
 #'          `make.consInt` will use row names
 #' @param imposeTidy `boolean` -- forces trees to match data using tidyName
+#' @param ... extra parameters to pass to `tidyName`
 #' @export
 #' @import magrittr
 #' @examples
@@ -26,7 +27,19 @@
 #' combo.tilia <- make.consInt(tilia, dat.mor)
 #' combo.ulmus <- make.consInt(ulmus, dat.mor)
 
-make.consInt <- function(phy, dat, matchCol = NA, imposeTidy = TRUE) {
-  out = list(phy, dat)
-  out
+make.consInt <- function(phy, dat, matchCol = NA, imposeTidy = TRUE, ...) {
+  dat.working <- dat
+  if(is.na(matchCol)) row.names(dat.working) <- dat[[matchCol]]
+  if(imposeTidy) {
+    whichRows <- match(tidyName(row.names(dat.working), ...),
+                       tidyName(phy$tip.label, ...))
+    row.names(dat.working)[!is.na(whichRows)] <-
+      phy$tip.label[whichRows[!is.na(whichRows)]]
+  }
+  phy.sub <- drop.tip(phy, which(!phy$tip.label %in% row.names(dat.working)))
+  dat.sub <- dat.sub[phy.sub$tip.label, ]
+  out <- list(phy.full = phy, phy.sub = phy.sub,
+             dat.full = dat.working, dat.sub = dat.sub)
+  class(out) <- 'consInt'
+  return(out)
 }
