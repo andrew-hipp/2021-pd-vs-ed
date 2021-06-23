@@ -13,19 +13,20 @@
 #' @export
 #' @import magrittr
 #' @examples
-data(accessions.mor) # read MOR accessions data
-data(desiderata.mor) # read MOR desiderata list
-temp <- c(accessions.mor$Taxon, desiderata.mor$taxon_name) %>%
-   unique %>% sort
-dat.mor <- data.frame(inGarden = temp %in% accessions.mor$Taxon,
-                      wanted = temp %in% desiderata.mor$taxon_name,
-                      row.names = temp)
-rm(temp)
-combo.malus <- make.consInt(malus, dat.mor)
-combo.quercus <- make.consInt(quercus, dat.mor)
-combo.tilia <- make.consInt(tilia, dat.mor)
-combo.ulmus <- make.consInt(ulmus, dat.mor)
+#' data(accessions.mor) # read MOR accessions data
+#' data(desiderata.mor) # read MOR desiderata list
+#' temp <- c(accessions.mor$Taxon, desiderata.mor$taxon_name) %>%
+#'    unique %>% sort
+#' dat.mor <- data.frame(inGarden = temp %in% accessions.mor$Taxon,
+#'                       wanted = temp %in% desiderata.mor$taxon_name,
+#'                       row.names = temp)
+#' rm(temp)
+#' combo.malus <- make.consInt(malus, dat.mor)
+#' combo.quercus <- make.consInt(quercus, dat.mor)
+#' combo.tilia <- make.consInt(tilia, dat.mor)
+#' combo.ulmus <- make.consInt(ulmus, dat.mor)
 
 make.consInt <- function(phy, dat, matchCol = NA, imposeTidy = TRUE) {
-
+  out = list(phy, dat)
+  out
 }

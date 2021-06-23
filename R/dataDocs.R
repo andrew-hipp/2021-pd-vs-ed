@@ -21,8 +21,8 @@
 #'  }
 #' @docType data
 #' @keywords datasets
-#' @name accessions_mor
-#' @usage data(accessions_mor)
+#' @name accessions.mor
+#' @usage data(accessions.mor)
 #' @format a `data.frame` of 2173 observations, 14 variables:
 
 NULL
