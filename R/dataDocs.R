@@ -17,12 +17,12 @@
 #'    \item GardenSubarea.
 #'    \item GardenGrid.
 #'    \item GardenSubGrid.
-#'    \item CommemorationText. 
+#'    \item CommemorationText.
 #'  }
 #' @docType data
 #' @keywords datasets
-#' @name accessions.mor
-#' @usage data(accessions.mor)
+#' @name accessions_mor
+#' @usage data(accessions_mor)
 #' @format a `data.frame` of 2173 observations, 14 variables:
 
 NULL
