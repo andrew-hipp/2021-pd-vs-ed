@@ -1,5 +1,5 @@
 Roxygen: list(markdown = TRUE)
-Package: PDvED
+Package: pdved
 Type: Package
 Title: Simulate and assess _ex situ_ conservation plans for phylogenetic
     diversity and evolutionary distinctiveness.
@@ -10,7 +10,7 @@ Maintainer: Andrew L Hipp <ahipp@mortonarb.org>
 Description: This package facilitates simulation and assessment
   of _ex situ_ conservation strategies
   that emphasize either maximizing phylogenetic diversity or mean evolutionary
-  distinctiveness of conserved species. 
+  distinctiveness of conserved species.
 License: GPL-3
 Imports:
   ape,
