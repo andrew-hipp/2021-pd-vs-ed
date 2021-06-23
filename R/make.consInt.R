@@ -13,6 +13,17 @@
 #' @param ... extra parameters to pass to `tidyName`
 #' @import magrittr
 #' @examples
+#' ### 1st block redundant with cleanPhylo example
+#' data(malus_tr)
+#' data(quercus_tr)
+#' data(tilia_tr)
+#' data(ulmus_tr)
+#' malus2 <- cleanPhylo(malus, delim = '_|_')
+#' quercus2 <- cleanPhylo(quercus)
+#' tilia2 <- cleanPhylo(tilia)
+#' ulmus2 <- ulmus
+#' ulmus2$tip.label <- paste('Ulmus', ulmus2$tip.label)
+#'
 #' data(accessions.mor) # read MOR accessions data
 #' data(desiderata.mor) # read MOR desiderata list
 #' temp <- c(accessions.mor$Taxon, desiderata.mor$taxon_name) %>%
@@ -21,10 +32,10 @@
 #'                       wanted = temp %in% desiderata.mor$taxon_name,
 #'                       row.names = temp)
 #' rm(temp)
-#' combo.malus <- make.consInt(malus, dat.mor)
-#' combo.quercus <- make.consInt(quercus, dat.mor)
-#' combo.tilia <- make.consInt(tilia, dat.mor)
-#' combo.ulmus <- make.consInt(ulmus, dat.mor)
+#' combo.malus <- make.consInt(malus2, dat.mor)
+#' combo.quercus <- make.consInt(quercus2, dat.mor)
+#' combo.tilia <- make.consInt(tilia2, dat.mor)
+#' combo.ulmus <- make.consInt(ulmus2, dat.mor)
 #'
 #' @export
 make.consInt <- function(phy, dat, matchCol = NA, imposeTidy = TRUE, ...) {
