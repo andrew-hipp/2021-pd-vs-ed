@@ -37,4 +37,5 @@ combo.malus <- make.consInt(malus, dat.mor)
 combo.quercus <- make.consInt(quercus, dat.mor)
 combo.tilia <- make.consInt(tilia, dat.mor)
 combo.ulmus <- make.consInt(ulmus, dat.mor)
+
 }
