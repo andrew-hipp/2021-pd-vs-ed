@@ -40,7 +40,7 @@
 #' @export
 make.consInt <- function(phy, dat, matchCol = NA, imposeTidy = TRUE, ...) {
   dat.working <- dat
-  if(is.na(matchCol)) row.names(dat.working) <- dat[[matchCol]]
+  if(!is.na(matchCol)) row.names(dat.working) <- dat[[matchCol]]
   if(imposeTidy) {
     whichRows <- match(tidyName(row.names(dat.working), ...),
                        tidyName(phy$tip.label, ...))
