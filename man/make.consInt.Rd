@@ -4,7 +4,7 @@
 \alias{make.consInt}
 \title{Make a \code{consInt} object}
 \usage{
-make.consInt(phy, dat, matchCol = NA, imposeTidy = TRUE)
+make.consInt(phy, dat, matchCol = NA, imposeTidy = TRUE, ...)
 }
 \arguments{
 \item{phy}{a \code{phylo} object}
@@ -15,6 +15,8 @@ make.consInt(phy, dat, matchCol = NA, imposeTidy = TRUE)
 \code{make.consInt} will use row names}
 
 \item{imposeTidy}{\code{boolean} -- forces trees to match data using tidyName}
+
+\item{...}{extra parameters to pass to \code{tidyName}}
 }
 \description{
 \code{make.consInt} welds together a \code{data.frame} with a \code{phylo} object to yield
