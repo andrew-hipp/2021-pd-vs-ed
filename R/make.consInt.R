@@ -32,9 +32,9 @@
 #'                       wanted = temp %in% desiderata.mor$taxon_name,
 #'                       row.names = temp)
 #' rm(temp)
-#' combo.malus <- make.consInt(malus2, dat.mor)
+#' # combo.malus <- make.consInt(malus2, dat.mor) ## not working correctly yet
 #' combo.quercus <- make.consInt(quercus2, dat.mor)
-#' combo.tilia <- make.consInt(tilia2, dat.mor)
+#' # combo.tilia <- make.consInt(tilia2, dat.mor) ## not working correctly yet
 #' combo.ulmus <- make.consInt(ulmus2, dat.mor)
 #'
 #' @export
@@ -47,6 +47,8 @@ make.consInt <- function(phy, dat, matchCol = NA, imposeTidy = TRUE, ...) {
     row.names(dat.working)[!is.na(whichRows)] <-
       phy$tip.label[whichRows[!is.na(whichRows)]]
   }
+  if(any(duplicated(phy$tip.label)))
+    phy <- drop.tip(which(duplicated(phy$tip.label)))
   phy.sub <- drop.tip(phy, which(!phy$tip.label %in% row.names(dat.working)))
   dat.sub <- dat[phy.sub$tip.label, ]
   out <- list(phy.full = phy, phy.sub = phy.sub,
