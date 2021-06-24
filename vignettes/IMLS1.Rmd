@@ -32,7 +32,7 @@ Our phylogenies as they stand now are included as package data. My thought is th
 The phylogenies we are developing have lots of accession information appended, and multiple inviduals per species. So for example:
 
 ```{r}
-library(ape) # this is a standard phylogenetics package in R
+library(ape) # this is a standard R phylogenetics package
 data(malus_tr) # this is one of Lindsey's Malus trees
 head(malus$tip.label, 10) # these are the tip labels as we build them
 plot(malus, cex = 0.6)
