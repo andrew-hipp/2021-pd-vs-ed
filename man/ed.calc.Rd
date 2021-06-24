@@ -14,3 +14,8 @@ ed.calc(x)
 Calculate evolutionary distinctiveness
 Calculates evolutionary distinctiveness for trees in a \code{consInt} object
 }
+\examples{
+example(make.consInt)
+temp <- ed.calc(combo.quercus)
+plot(all.ed.equalSplits ~ sub.ed.equalSplits, temp$intersect)
+}

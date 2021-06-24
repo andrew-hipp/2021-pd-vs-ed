@@ -3,6 +3,10 @@
 #' Calculates evolutionary distinctiveness for trees in a `consInt` object
 #' @param x a `consInt` object
 #' @import phyloregion
+#' @examples
+#' example(make.consInt)
+#' temp <- ed.calc(combo.quercus)
+#' plot(all.ed.equalSplits ~ sub.ed.equalSplits, temp$intersect)
 #' @export
 ed.calc <- function(x) {
   if(class(x) != 'consInt') warning('Expecting a consInt object')
