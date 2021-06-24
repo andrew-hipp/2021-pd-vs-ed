@@ -11,7 +11,8 @@ cleanPhylo(
   uniquesOnly = TRUE,
   strFixed = TRUE,
   gsubFromTo = c("_", " "),
-  gsubFixed = TRUE
+  gsubFixed = TRUE,
+  trimWhiteSpace = TRUE
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ cleanPhylo(
 \item{gsubFromTo}{Character, \code{length = 2}; or \code{NA}: if character, use with \code{gsub} to clean tip labels}
 
 \item{gsubFixed}{Boolean: use \code{fixed = TRUE} in \code{gsub}?}
+
+\item{trimWhiteSpace}{Boolean: trim leading and trailing whitespace?}
 }
 \description{
 Clean a phylogeny for single-tip-per-species analyses

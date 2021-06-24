@@ -12,6 +12,7 @@
 #' @param strFixed Boolean: use \code{fixed = TRUE} in \code{strsplit}?
 #' @param gsubFromTo Character, \code{length = 2}; or \code{NA}: if character, use with \code{gsub} to clean tip labels
 #' @param gsubFixed Boolean: use \code{fixed = TRUE} in \code{gsub}?
+#' @param trimWhiteSpace Boolean: trim leading and trailing whitespace?
 #'
 #' @examples
 #' data(malus_tr)
@@ -27,7 +28,8 @@
 cleanPhylo <- function(tr, delim = '|', tipElem = 1,
                         uniquesOnly = TRUE, strFixed = TRUE,
                         gsubFromTo = c('_', ' '),
-                        gsubFixed = TRUE) {
+                        gsubFixed = TRUE,
+                        trimWhiteSpace = TRUE) {
   labsDecomp <- strsplit(tr$tip.label, delim, fixed = strFixed)
   labsNew <- sapply(labsDecomp, '[', tipElem)
   if(uniquesOnly) {
@@ -40,5 +42,6 @@ cleanPhylo <- function(tr, delim = '|', tipElem = 1,
   }
   if(!is.na(gsubFromTo[1]))
     tr$tip.label <- gsub(gsubFromTo[1], gsubFromTo[2], tr$tip.label, fixed = gsubFixed)
+  if(trimWhiteSpace) tr$tip.label <- trimws(tr$tip.label)
   return(tr)
 }

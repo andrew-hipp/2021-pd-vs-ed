@@ -8,7 +8,9 @@ vignette: >
 ---
 # Evolutionary distinctiveness
 ## IMLS update, 2021-06-23, Andrew Hipp
-As we have been waiting for our final sequencing results, which just came in at the end of May [Hooray!], I have been thinking about how to organize and use the phylogenetic data. I'll present today `edivColl` -- for Evolutionary Diversity in Collections -- which is the start of an `R` package that will provide tools for us and for others doing similar work. 
+As we have been waiting for our final sequencing results, which just came in at the end of May [Hooray!], I have been thinking about how to organize and use the phylogenetic data. I'll present today `edivColl` -- for Evolutionary Diversity in Collections -- which is the start of an `R` package that will provide tools for us and for others doing similar work.
+
+The package lives at https://github.com/andrew-hipp/edivColl, but it can be migrated to the shared repository if that's better, or we can fork it into there if we like... whatever is needed. At this point, I'm working in a separate repository b/c that's what I'm used to.
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -18,5 +20,19 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(pdved)
+devtools::install_github('andrew-hipp/edivColl', dep = FALSE)
+# note that if you don't have dependencies already installed, set dep = TRUE or
+#   leave out the dep argument. it's in there now b/c updating dependencies is enforced
+#   and sometimes irritating during development.
+library(edivColl)
+```
+## First, let's get some phylogenies
+Our phylogenies as they stand now are included as package data. My thought is that we will leave them as such unless there is some concern about doing so; I'd rather have the data all easily accessible to reviewers and users in the package instead of making them scrounge around in other repositories (which I and almost everyone else does; it's not the end of the world, I just don't know if it's best practice).
+
+The phylogenies we are developing have lots of accession information appended, and multiple inviduals per species. So for example:
+
+```{r}
+library(ape) # this is a standard phylogenetics package in R
+data(malus_tr) # this is one of Lindsey's Malus trees
+head(malus$tip.label, 20) # these are the tip labels as we build them
 ```
