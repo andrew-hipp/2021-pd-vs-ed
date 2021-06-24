@@ -6,7 +6,9 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+# Evolutionary distinctiveness -- what are our options and what does it show?
 
+Let's set up `R`:
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
