@@ -1,0 +1,20 @@
+---
+title: "IMLS1"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{IMLS1}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+# Evolutionary distinctiveness
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(pdved)
+```
