@@ -17,6 +17,8 @@ Imports:
   picante
 RoxygenNote: 7.1.1
 Suggests:
+    PhyloMeasures,
+    phytools,
     rmarkdown,
     knitr
 VignetteBuilder: knitr

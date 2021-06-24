@@ -5,10 +5,10 @@
 #' @import phyloregion
 #' @examples
 #' example(make.consInt)
-#' temp <- ed.calc(combo.quercus)
+#' temp <- eDisCalc(combo.quercus)
 #' plot(all.ed.equalSplits ~ sub.ed.equalSplits, temp$intersect)
 #' @export
-ed.calc <- function(x) {
+eDisCalc <- function(x) {
   if(class(x) != 'consInt') warning('Expecting a consInt object')
   intNames <- intersect(x$phy.full$tip.label, x$phy.sub$tip.label)
   out <- list(

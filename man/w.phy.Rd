@@ -4,10 +4,12 @@
 \alias{w.phy}
 \title{Calculate phylogenetic distinctiveness}
 \usage{
-w.phy(phy)
+w.phy(phy, useSqrt = TRUE)
 }
 \arguments{
 \item{phy}{\code{phylo} object}
+
+\item{useSqrt}{\code{boolean} - return sqrt?}
 }
 \description{
 Calculate phylogenetic distinctiveness
