@@ -1,4 +1,4 @@
-# 2021-pd-vs-ed
+# edivColl
 considering the implications of conserving for phylogenetic diversity vs evoutionary distinctiveness. Install using
 
 `devtools::install_github('andrew-hipp/edivColl')`
