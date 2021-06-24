@@ -33,9 +33,9 @@
 #'                       wanted = temp %in% desiderata.mor$taxon_name,
 #'                       row.names = temp)
 #' rm(temp)
-#' # combo.malus <- make.consInt(malus2, dat.mor) ## not working correctly yet
+#' combo.malus <- make.consInt(malus2, dat.mor)
 #' combo.quercus <- make.consInt(quercus2, dat.mor)
-#' # combo.tilia <- make.consInt(tilia2, dat.mor) ## not working correctly yet
+#' # combo.tilia <- make.consInt(tilia2, dat.mor) ## duplicate somewhere
 #' combo.ulmus <- make.consInt(ulmus2, dat.mor)
 #'
 #' @export

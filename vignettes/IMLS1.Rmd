@@ -27,12 +27,29 @@ devtools::install_github('andrew-hipp/edivColl', dep = FALSE)
 library(edivColl)
 ```
 ## First, let's get some phylogenies
-Our phylogenies as they stand now are included as package data. My thought is that we will leave them as such unless there is some concern about doing so; I'd rather have the data all easily accessible to reviewers and users in the package instead of making them scrounge around in other repositories (which I and almost everyone else does; it's not the end of the world, I just don't know if it's best practice).
+Our phylogenies as they stand now are included as package data. My thought is that we will leave them as such unless there is some concern about doing so; I'd rather have the data all easily accessible to reviewers and users in the package instead of making them scrounge around in other repositories (which I and almost everyone else does; it's not the end of the world, I just don't think it's ideal if you can avoid it).
 
 The phylogenies we are developing have lots of accession information appended, and multiple inviduals per species. So for example:
 
 ```{r}
 library(ape) # this is a standard phylogenetics package in R
 data(malus_tr) # this is one of Lindsey's Malus trees
-head(malus$tip.label, 20) # these are the tip labels as we build them
+head(malus$tip.label, 10) # these are the tip labels as we build them
+plot(malus, cex = 0.6)
+```
+
+For understanding phylogeny of the group, the accessions information and inclusion of multiple exemplars per species is essential. But for phylogenetic diversity and distinctiveness, this is most distracting. So let's strip off that information.
+
+```{r}
+malus2 <- cleanPhylo(malus, delim = '_|_')
+head(malus2$tip.label, 20)
+```
+
+Isn't that nice?
+
+Also, for phylogenetic diversity, we generally want the branch lengths to be in time units; this tree has its branches in units of substitutions / nucleotide. Let's make a rather casual assumption about the rate of evolution evolving along a tree and rescale the tree appropriately.
+
+```{r}
+malus2 <- chronos(malus2)
+plot(malus2, cex = 0.6)
 ```

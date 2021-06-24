@@ -22,7 +22,17 @@ knitr::opts_chunk$set(
 ```{r setup}
 devtools::install_github('andrew-hipp/edivColl', dep = FALSE)
 # note that if you don't have dependencies already installed, set dep = TRUE or
-#   leave blank... it's in there now b/c updating dependencies is enforced
+#   leave out the dep argument. it's in there now b/c updating dependencies is enforced
 #   and sometimes irritating during development.
 library(edivColl)
+```
+## First, let's get some phylogenies
+Our phylogenies as they stand now are included as package data. My thought is that we will leave them as such unless there is some concern about doing so; I'd rather have the data all easily accessible to reviewers and users in the package instead of making them scrounge around in other repositories (which I and almost everyone else does; it's not the end of the world, I just don't know if it's best practice).
+
+The phylogenies we are developing have lots of accession information appended, and multiple inviduals per species. So for example:
+
+```{r}
+library(ape) # this is a standard phylogenetics package in R
+data(malus_tr) # this is one of Lindsey's Malus trees
+head(malus$tip.label, 20) # these are the tip labels as we build them
 ```
