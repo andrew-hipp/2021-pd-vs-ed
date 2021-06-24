@@ -36,6 +36,7 @@ tilia2 <- cleanPhylo(tilia)
 ulmus2 <- ulmus
 ulmus2$tip.label <- paste('Ulmus', ulmus2$tip.label)
 
+### Not duplicated in cleanPhylo:
 data(accessions.mor) # read MOR accessions data
 data(desiderata.mor) # read MOR desiderata list
 temp <- c(accessions.mor$Taxon, desiderata.mor$taxon_name) \%>\%
@@ -44,9 +45,9 @@ dat.mor <- data.frame(inGarden = temp \%in\% accessions.mor$Taxon,
                       wanted = temp \%in\% desiderata.mor$taxon_name,
                       row.names = temp)
 rm(temp)
-combo.malus <- make.consInt(malus2, dat.mor)
+# combo.malus <- make.consInt(malus2, dat.mor) ## not working correctly yet
 combo.quercus <- make.consInt(quercus2, dat.mor)
-combo.tilia <- make.consInt(tilia2, dat.mor)
+# combo.tilia <- make.consInt(tilia2, dat.mor) ## not working correctly yet
 combo.ulmus <- make.consInt(ulmus2, dat.mor)
 
 }

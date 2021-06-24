@@ -3,6 +3,7 @@
 export(cleanPhylo)
 export(make.consInt)
 export(tidyName)
+export(w.phy)
 import(TreeSim)
 import(ape)
 import(magrittr)

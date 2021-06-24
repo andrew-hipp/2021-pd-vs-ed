@@ -24,6 +24,7 @@
 #' ulmus2 <- ulmus
 #' ulmus2$tip.label <- paste('Ulmus', ulmus2$tip.label)
 #'
+#' ### Not duplicated in cleanPhylo:
 #' data(accessions.mor) # read MOR accessions data
 #' data(desiderata.mor) # read MOR desiderata list
 #' temp <- c(accessions.mor$Taxon, desiderata.mor$taxon_name) %>%
