@@ -40,6 +40,7 @@
 #'
 #' @export
 make.consInt <- function(phy, dat, matchCol = NA, imposeTidy = TRUE, ...) {
+  require(magrittr)
   dat.working <- dat
   if(!is.na(matchCol)) row.names(dat.working) <- dat[[matchCol]]
   if(imposeTidy) {
