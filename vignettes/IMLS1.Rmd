@@ -12,6 +12,8 @@ As we have been waiting for our final sequencing results, which just came in at 
 
 The package lives at https://github.com/andrew-hipp/edivColl, but it can be migrated to the shared repository if that's better, or we can fork it into there if we like... whatever is needed. At this point, I'm working in a separate repository b/c that's what I'm used to.
 
+Also, please note that most of the code I am showing here is embedded in the examples for the functions in this package. My plan is that this vignette will eventually serve as a worked example and a gateway into the package and questions that can be addressed with it, and each example will provide enough information to get our IMLS data into our hands and others' for analysis.
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -26,7 +28,8 @@ devtools::install_github('andrew-hipp/edivColl', dep = FALSE)
 #   and sometimes irritating during development.
 library(edivColl)
 ```
-## First, let's get some phylogenies
+## 1. First, let's get our data together
+### 1.1 phylogenies
 Our phylogenies as they stand now are included as package data. My thought is that we will leave them as such unless there is some concern about doing so; I'd rather have the data all easily accessible to reviewers and users in the package instead of making them scrounge around in other repositories (which I and almost everyone else does; it's not the end of the world, I just don't think it's ideal if you can avoid it).
 
 The phylogenies we are developing have lots of accession information appended, and multiple inviduals per species. So for example:
@@ -35,10 +38,12 @@ The phylogenies we are developing have lots of accession information appended, a
 library(ape) # this is a standard R phylogenetics package
 data(malus_tr) # this is one of Lindsey's Malus trees
 head(malus$tip.label, 10) # these are the tip labels as we build them
-plot(malus, cex = 0.6)
+```
+```{r fig.width = 6, fig.height = 6}
+plot(malus, cex = 0.5)
 ```
 
-For understanding phylogeny of the group, the accessions information and inclusion of multiple exemplars per species is essential. But for phylogenetic diversity and distinctiveness, this is most distracting. So let's strip off that information.
+For understanding phylogeny of the group, the accessions information and inclusion of multiple exemplars per species is essential. But for phylogenetic diversity and distinctiveness, this is most distracting. So let's strip off that information. The `cleanPhylo` function assumes that you have thrown the taxon name _somewhere_ into the tip label (if you haven't done this, there are helper functions on my lab repository, but I am keeping them separate for the time being b/c this is very lab-specific) and delimited. It strips out trailing and leading whitespace by default and a few other niceties, though others are still needed. See `?cleanPhylo` for details.
 
 ```{r}
 malus2 <- cleanPhylo(malus, delim = '_|_')
@@ -49,7 +54,31 @@ Isn't that nice?
 
 Also, for phylogenetic diversity, we generally want the branch lengths to be in time units; this tree has its branches in units of substitutions / nucleotide. Let's make a rather casual assumption about the rate of evolution evolving along a tree and rescale the tree appropriately.
 
-```{r}
+```{r fig.width = 6, fig.height = 6}
 malus2 <- chronos(malus2)
 plot(malus2, cex = 0.6)
 ```
+
+### 1.2 collections data
+Okay, that's great. Now our questions are obviously tied not to just the phylogeny, but to the phylogeny and what is at the tips, both what we want to obtain and what we have already. So let's bundle up the phylogeny with data about our garden. There's a function `make.consInt` that creates a consistent object type, bundling together data about what is in the garden and what is desired with a phylogeny, and includes both the full data and tree and then just a tree subsetted to your taxa, as well as a data table that matches that tree. We'll talk more in a bit about why bother keeping the full tree. What it doesn't do yet is timestamp the data import and the file locations, which would be worth doing! I am relegating this information for the time being to the (partial) documentation of the datasets.
+
+```{r}
+require(magrittr) # parce que ceci n'est pas une pipe
+data(accessions.mor) # read MOR accessions data
+data(desiderata.mor) # read MOR desiderata list
+temp <- c(accessions.mor$Taxon, desiderata.mor$taxon_name) %>%
+   unique %>% sort
+dat.mor <- data.frame(inGarden = temp %in% accessions.mor$Taxon,
+                      wanted = temp %in% desiderata.mor$taxon_name,
+                      row.names = temp)
+rm(temp)
+combo.malus <- make.consInt(malus2, dat.mor)
+data(quercus_tr) # while we're at it, I'm throwing in Quercus
+quercus2 <- cleanPhylo(quercus)
+combo.quercus <- make.consInt(quercus2, dat.mor)
+str(combo.quercus)
+```
+
+## 2. Now let's look at evolutionary distinctiveness
+There are a few ways we could skin this cat.
+  * __Prioritize spp by their evolutionary distinctiveness globally.__ This means you would take the whole phylogeny of all spp (extant spp only, presumably, b/c I think from a conservation standpoint, extinct spp exist only via extant spp, unless perhaps if we think of history as having moral standing aside from its endpoints in the current day, which I think I do, but I haven't got this worked out yet in my head) and calculate evolutionary distinctiveness in some way for all tips (we'll get to metrics in a moment). This is the approach taken in [Larkin et al. 2015](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0156973). 
