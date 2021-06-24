@@ -1,16 +1,14 @@
 Roxygen: list(markdown = TRUE)
-Package: pdved
+Package: edivColl
 Type: Package
-Title: Simulate and assess _ex situ_ conservation plans for phylogenetic
-    diversity and evolutionary distinctiveness.
-Version: 0.1-1
-Date: 2021-06-21
+Title: Evolutionary Diversity of Collections
+Version: 0.1-2
+Date: 2021-06-24
 Author: Andrew L Hipp <ahipp@mortonarb.org>
 Maintainer: Andrew L Hipp <ahipp@mortonarb.org>
-Description: This package facilitates simulation and assessment
-  of _ex situ_ conservation strategies
-  that emphasize either maximizing phylogenetic diversity or mean evolutionary
-  distinctiveness of conserved species.
+Description: This package facilitates assessment
+  of phylogenetic diversity and phylogenetic distinctiveness of collections,
+  with _ex situ_ conservation strategies in mind.
 License: GPL-3
 Imports:
   ape,
@@ -18,7 +16,7 @@ Imports:
   phyloregion,
   picante
 RoxygenNote: 7.1.1
-Suggests: 
+Suggests:
     rmarkdown,
     knitr
 VignetteBuilder: knitr

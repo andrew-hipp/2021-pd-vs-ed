@@ -1,7 +1,7 @@
 # 2021-pd-vs-ed
 considering the implications of conserving for phylogenetic diversity vs evoutionary distinctiveness. Install using
 
-`devtools::install_github('andrew-hipp/2021-pd-vs-ed')`
+`devtools::install_github('andrew-hipp/edivColl')`
 
 If you stumble across this and
 the package hasn't been published yet, I'm still trying out ideas, but don't
