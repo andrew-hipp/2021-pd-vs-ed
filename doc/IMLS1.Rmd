@@ -39,7 +39,7 @@ library(ape) # this is a standard R phylogenetics package
 data(malus_tr) # this is one of Lindsey's Malus trees
 head(malus$tip.label, 10) # these are the tip labels as we build them
 ```
-```{r fig.width = 6, fig.height = 6}
+```{r fig.width = 7, fig.height = 6}
 plot(malus, cex = 0.5)
 ```
 
@@ -54,7 +54,7 @@ Isn't that nice?
 
 Also, for phylogenetic diversity, we generally want the branch lengths to be in time units; this tree has its branches in units of substitutions / nucleotide. Let's make a rather casual assumption about the rate of evolution evolving along a tree and rescale the tree appropriately.
 
-```{r fig.width = 6, fig.height = 6}
+```{r fig.width = 7, fig.height = 6}
 malus2 <- chronos(malus2)
 plot(malus2, cex = 0.6)
 ```
@@ -86,7 +86,7 @@ There are a few ways we could quantify the phylogenetic weight of a species for 
   * __Global evolutionary distinctiveness (eDisGlobal).__ This means you would take the whole phylogeny of all spp (extant spp only, presumably, b/c I think from a conservation standpoint, extinct spp exist only via extant spp, unless perhaps if we think of history as having moral standing aside from its endpoints in the current day, which I think I do, but I haven't got this worked out yet in my head) and calculate evolutionary distinctiveness in some way for all tips (we'll get to metrics in a moment). eDivGlobal is context specific w/ respect to what spp are extant at the moment when you calculate it; it ignores what species are in a collection. This is the approach taken in [Larkin et al. 2015](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0156973).
 
   * __Collections evolutionary distinctiveness (eDisColl).__ This would entail considering the phylogeny of just a collections-relevant phylogeny, subsetted to those taxa that are in the collections of interest (be they global or local) as well as taxa desired (this could be local or global if the phylogeny represents collections holdings globally; or local only in any case).
-  
+
   * __Phylogenetic diversity of resulting collection (pDivColl).__ Here we would flip the question from being "what is the distinctiveness of the species?" to "how does the phylogenetic diversity of what we are collecting change when we add a species or collection of species?" This interests me, because I suspect there are combinatorial effects that won't be realized if we just use rank order (or absolute value) of evolutionary distinctiveness as our phylogenetic criterion for prioritizing collections.
 
 ### 2.2 a little look at eDisGlobal and eDisColl
@@ -94,5 +94,8 @@ There are a few functions in the package that calculate these. `w.phy` calculate
 
 So `eDisCalc` calculates these on a `consInt` object, and returns both the global and collections results.
 
-```{r}
+```{r fig.width = 7, fig.height = 6}
+temp <- eDisCalc(combo.quercus)
+plot(all.ed.equalSplits ~ sub.ed.equalSplits, temp$intersect,
+    ylab = 'eDisGlobal - ED', xlab = 'eDisColl.MOR - ED')
 ```

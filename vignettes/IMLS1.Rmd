@@ -39,7 +39,7 @@ library(ape) # this is a standard R phylogenetics package
 data(malus_tr) # this is one of Lindsey's Malus trees
 head(malus$tip.label, 10) # these are the tip labels as we build them
 ```
-```{r fig.width = 6, fig.height = 6}
+```{r fig.width = 7, fig.height = 6}
 plot(malus, cex = 0.5)
 ```
 
@@ -54,7 +54,7 @@ Isn't that nice?
 
 Also, for phylogenetic diversity, we generally want the branch lengths to be in time units; this tree has its branches in units of substitutions / nucleotide. Let's make a rather casual assumption about the rate of evolution evolving along a tree and rescale the tree appropriately.
 
-```{r fig.width = 6, fig.height = 6}
+```{r fig.width = 7, fig.height = 6}
 malus2 <- chronos(malus2)
 plot(malus2, cex = 0.6)
 ```
@@ -94,7 +94,7 @@ There are a few functions in the package that calculate these. `w.phy` calculate
 
 So `eDisCalc` calculates these on a `consInt` object, and returns both the global and collections results.
 
-```{r fig.width = 6, fig.height = 6}
+```{r fig.width = 7, fig.height = 6}
 temp <- eDisCalc(combo.quercus)
 plot(all.ed.equalSplits ~ sub.ed.equalSplits, temp$intersect,
     ylab = 'eDisGlobal - ED', xlab = 'eDisColl.MOR - ED')
