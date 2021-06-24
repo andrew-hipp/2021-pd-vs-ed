@@ -99,3 +99,16 @@ temp <- eDisCalc(combo.quercus)
 plot(all.ed.equalSplits ~ sub.ed.equalSplits, temp$intersect,
     ylab = 'eDisGlobal - ED', xlab = 'eDisColl.MOR - ED')
 ```
+
+```{r fig.width = 7, fig.height = 6}
+library(ggplot2)
+library(ggrepel)
+temp$intersect$sp <- row.names(temp$intersect)
+p <- ggplot(temp$intersect,
+            aes(y = all.ed.equalSplits,
+                x = sub.ed.equalSplits,
+                label = sp))
+p <- p + geom_point()
+p <- p + geom_label_repel()
+print(p)
+```
