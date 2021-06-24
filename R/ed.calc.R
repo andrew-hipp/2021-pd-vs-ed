@@ -2,6 +2,8 @@
 
 #' Calculates evolutionary distinctiveness for trees in a `consInt` object
 #' @param x a `consInt` object
+#' @import phyloregion
+#' @export 
 ed.calc <- function(x) {
   if(class(x) != 'consInt') warning('Expecting a consInt object')
   out <- data.frame(
