@@ -36,4 +36,4 @@ and these data classes:
   as binary or weights / absolute number of accessions; bundled with a phylo object
 3. 'consPlan' - a tree, with a matrix of added taxa
 
-... maybe. We'll see
+... maybe. We'll see.
