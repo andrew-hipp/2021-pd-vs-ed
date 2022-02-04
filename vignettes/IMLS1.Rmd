@@ -97,8 +97,9 @@ So `eDisCalc` calculates these on a `consInt` object, and returns both the globa
 ```{r fig.width = 7, fig.height = 6}
 library(ggplot2)
 library(ggrepel)
-temp$intersect$sp <- row.names(temp$intersect)
-p <- ggplot(temp$intersect,
+qcalc <- eDisCalc(combo.quercus)
+qcalc$intersect$sp <- row.names(qcalc$intersect)
+p <- ggplot(qcalc$intersect,
             aes(y = all.ed.equalSplits,
                 x = sub.ed.equalSplits,
                 label = sp))
