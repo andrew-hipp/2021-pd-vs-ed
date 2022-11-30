@@ -1,6 +1,6 @@
 ---
 title: "IMLS1"
-output: rmarkdown::html_vignette
+output: rmarkdown::pdf_document
 vignette: >
   %\VignetteIndexEntry{IMLS1}
   %\VignetteEngine{knitr::rmarkdown}
@@ -22,11 +22,14 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-devtools::install_github('andrew-hipp/edivColl', dep = FALSE)
-# note that if you don't have dependencies already installed, set dep = TRUE or
-#   leave out the dep argument. it's in there now b/c updating dependencies is enforced
-#   and sometimes irritating during development.
-library(edivColl)
+temp <- require('edivColl')
+if(!temp) {
+  devtools::install_github('andrew-hipp/edivColl', dep = FALSE)
+  # note that if you don't have dependencies already installed, set dep = TRUE or
+  #   leave out the dep argument. it's in there now b/c updating dependencies is enforced
+  #   and sometimes irritating during development.
+  library(edivColl)
+}
 ```
 ## 1. First, let's get our data together
 ### 1.1 phylogenies
