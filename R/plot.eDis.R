@@ -3,31 +3,34 @@
 #' @import(ggplot2)
 #' @import(ggtree)
 #' 
-plot.eDis <- function(x, whichPhy = 'phy.full', whichDat = 'dat.full', whichDis = 'w') {
+plot.eDis <- function(x, whichPhy = 'phy.full', whichDat = 'dat.full', whichDis = 'w',
+                      tSize = 3, tFill = 'gray', tPad = unit(0.1, "lines"), tR = unit(0.1, "lines"), tCol = 'black',
+                      hWidth = 0.1, hOff = 1) {
   if(class(x) == 'phylo') stop('please pass me an eDis object')
   phy <- x$x[[whichPhy]]
   dat <- x$x[[whichDat]]
   dis <- x[[whichPhy]][,whichDis, drop = F]
   p <- ggtree(phy, layout = 'rectangular', size = 0.25)
   p <- p + geom_tiplab(fontface='italic',
-                       size = 1.7,
+                       size = tSize,
                        color = ifelse(phy$tip.label %in% row.names(dat), "black", "gray")
                        )
   if("node.label" %in% names(phy)) {
     p <- p + geom_label(aes(x=branch),
                         label = phy$node.label,
-                        size = 2.5,
-                        fill = 'gray',
-                        label.padding = unit(0.18, "lines"),
-                        label.r = unit(0.1, "lines"),
-                        color = 'black')
+                        size = t,
+                        fill = tFill,
+                        label.padding = tPad,
+                        label.r = tR,
+                        color = tCol)
   }
-  p2 <- gheatmap(p, dis, width = 0.01,
-                font.size = 0, offset = 0.08)
-  p2 <- p2 + scale_fill_gradient(paste("Phylogenetic distinctiveness -", whichDis),
+  p2 <- gheatmap(p, dis, width = hWidth,
+                font.size = 0, offset = hOff)
+  p2 <- p2 + scale_fill_gradient(
+                paste("Phylogenetic distinctiveness -", whichDis),
                 low = "#000080",
                 high = "#FFFF00")
-  p2 <- p2 + theme(legend.position = c(0.1, 0.9),
+  p2 <- p2 + theme(legend.position = c(0.15, 0.9),
                   legend.title = element_text(size = 10),
                   legend.text = element_text(size = 7),
                   legend.key.size = unit(0.30, 'cm'),
