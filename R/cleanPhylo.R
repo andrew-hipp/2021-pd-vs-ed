@@ -1,4 +1,5 @@
 #' Clean a phylogeny for single-tip-per-species analyses
+#' Note that adding dataset to phylogeny is a separate step
 #'
 #' @import ape
 #' @import TreeSim
