@@ -5,8 +5,8 @@
 #' 
 plot.eDis <- function(x, whichPhy = 'phy.full', whichDat = 'dat.full', whichDis = 'w',
                       tSize = 3, tFill = 'gray', tPad = unit(0.1, "lines"), tR = unit(0.1, "lines"), tCol = 'black',
-                      hWidth = 0.1, hOff = 1) {
-  if(class(x) == 'phylo') stop('please pass me an eDis object')
+                      hWidth = 0.1, hOff = 1, legPos = c(0.15, 0.95)) {
+  if(!'x' %in% names(x)) stop('please pass me an eDis object')
   phy <- x$x[[whichPhy]]
   dat <- x$x[[whichDat]]
   dis <- x[[whichPhy]][,whichDis, drop = F]
@@ -30,7 +30,7 @@ plot.eDis <- function(x, whichPhy = 'phy.full', whichDat = 'dat.full', whichDis 
                 paste("Phylogenetic distinctiveness -", whichDis),
                 low = "#000080",
                 high = "#FFFF00")
-  p2 <- p2 + theme(legend.position = c(0.15, 0.9),
+  p2 <- p2 + theme(legend.position = legPos,
                   legend.title = element_text(size = 10),
                   legend.text = element_text(size = 7),
                   legend.key.size = unit(0.30, 'cm'),

@@ -9,11 +9,42 @@ vignette: >
 # generate figure for IMLS document
 First, get `edivColl` attached:
 
-
 ```{r setup}
-  devtools::install_github('andrew-hipp/edivColl', dep = TRUE)
-  # note that if you don't have dependencies already installed, set dep = TRUE or
-  #   leave out the dep argument. it's in there now b/c updating dependencies is enforced
-  #   and sometimes irritating during development.
   library(edivColl)
+  ## and a couple of work-arounds till the package is updated with correct namespace
+  library(ggplot2)
+  library(magrittr)
+```
+
+Then bring in tree
+```{r}
+data(ulmus_tr)
+data(accessions.mor) # read MOR accessions data
+data(desiderata.mor) # read MOR desiderata list
+```
+
+Now clean data
+```{r}
+ulmus2 <- ulmus
+ulmus2$tip.label <- paste('Ulmus', ulmus$tip.label)
+temp <- 
+  c(accessions.mor$Taxon, desiderata.mor$taxon_name) %>%
+  unique %>% sort
+dat.mor <- 
+  data.frame(inGarden = temp %in% accessions.mor$Taxon,
+    wanted = temp %in% desiderata.mor$taxon_name,
+    row.names = temp)
+rm(temp)
+combo.ulmus <- make.consInt(ulmus2, dat.mor)
+```
+
+Now do the evolutionary distinctiveness:
+```{r}
+ulmus.e <- eDisCalc(combo.ulmus)
+
+pdf('ulmus.e.pdf', 5, 7)
+ulmus.p <- 
+  edivColl:::plot.eDis(ulmus.e, hWidth = 0.075, hOff = 16, legPos = c(0.2, 0.915))
+print(ulmus.p)
+dev.off()
 ```
