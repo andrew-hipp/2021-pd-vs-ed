@@ -1,0 +1,19 @@
+---
+title: "Ulmus tree for IMLS document"
+output: rmarkdown::pdf_document
+vignette: >
+  %\VignetteIndexEntry{UlmusIMLS}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+# generate figure for IMLS document
+First, get `edivColl` attached:
+
+
+```{r setup}
+  devtools::install_github('andrew-hipp/edivColl', dep = TRUE)
+  # note that if you don't have dependencies already installed, set dep = TRUE or
+  #   leave out the dep argument. it's in there now b/c updating dependencies is enforced
+  #   and sometimes irritating during development.
+  library(edivColl)
+```

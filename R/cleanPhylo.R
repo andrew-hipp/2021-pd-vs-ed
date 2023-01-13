@@ -2,8 +2,8 @@
 #' Note that adding dataset to phylogeny is a separate step
 #'
 #' @import ape
-#' @import TreeSim
-#' @import phyloregion
+## #' @import TreeSim
+## #' @import phyloregion
 #' @import picante
 #'
 #' @param tr A \code{phylo} object
